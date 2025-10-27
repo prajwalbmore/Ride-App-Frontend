@@ -109,7 +109,7 @@ const BookingModal = ({ setOpen, selected }) => {
         <div className="flex justify-center">
           <img
             // src={`http://localhost:5000/uploads/${selected?.driverId?.qrCode}`}
-            src={`https://ride-app-backend-liq8.onrender.com//uploads/${selected?.driverId?.qrCode}`}
+            src={`https://ride-app-backend-liq8.onrender.com/uploads/${selected?.driverId?.qrCode}`}
             alt="QR Code"
             className="max-h-[70vh] sm:max-h-[80vh] w-auto object-contain rounded-lg"
           />
