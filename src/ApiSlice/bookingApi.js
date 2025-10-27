@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-// const BaseUrl = "https://ride-app-backend-liq8.onrender.com/api";
-const BaseUrl = "http://localhost:5000/api";
+const BaseUrl = "https://ride-app-backend-liq8.onrender.com/api";
+// const BaseUrl = "http://localhost:5000/api";
 export const bookingApi = createApi({
   reducerPath: "bookingApi",
   baseQuery: fetchBaseQuery({
