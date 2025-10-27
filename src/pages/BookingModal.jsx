@@ -89,7 +89,10 @@ const BookingModal = ({ setOpen, selected }) => {
       toast.error("Something went wrong!");
     }
   };
-
+  console.log(
+    "first",
+    `http://localhost:5000/upload/${selected?.driverId?.qrCode}`
+  );
   return (
     <div className="space-y-5">
       {/* Confirmation Text */}
@@ -104,13 +107,11 @@ const BookingModal = ({ setOpen, selected }) => {
           Payment QR Code
         </p>
         <div className="flex justify-center">
-          <QRCodeCanvas
-            value={qrData}
-            size={120}
-            bgColor="#ffffff"
-            fgColor="#2563eb"
-            level="M"
-            includeMargin
+          <img
+            // src={`http://localhost:5000/uploads/${selected?.driverId?.qrCode}`}
+            src={`https://ride-app-backend-liq8.onrender.com//uploads/${selected?.driverId?.qrCode}`}
+            alt="QR Code"
+            className="max-h-[70vh] sm:max-h-[80vh] w-auto object-contain rounded-lg"
           />
         </div>
       </div>
