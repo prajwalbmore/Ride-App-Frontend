@@ -1,6 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useRegisterMutation } from "../ApiSlice/authApi";
+import { toast } from "sonner";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const initialValues = {
@@ -9,7 +12,8 @@ const Register = () => {
     phone: "",
     password: "",
   };
-
+  const navigate = useNavigate();
+  const [register] = useRegisterMutation();
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
     email: Yup.string()
@@ -23,9 +27,20 @@ const Register = () => {
       .required("Password is required"),
   });
 
-  const handleSubmit = (values) => {
-    console.log("Registration Data:", values);
-    // API call to register the user
+  const handleSubmit = async (values) => {
+    console.log("Form Data:", values);
+    try {
+      const res = await register(values).unwrap();
+      if (res?.success) {
+        toast.success(res.message);
+        navigate("/login");
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      toast.error(res.message);
+      console.log(error);
+    }
   };
 
   return (
@@ -115,9 +130,9 @@ const Register = () => {
 
         <p className="mt-6 text-gray-500 text-center text-sm">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
+          <Link to="/login" className="text-blue-600 hover:underline">
             Log In
-          </a>
+          </Link>
         </p>
       </div>
     </div>
