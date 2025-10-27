@@ -47,7 +47,8 @@ const BookingsDetails = () => {
 
   const handleViewScreenshot = (url, booking) => {
     setSelected(booking);
-    setImageUrl(`http://localhost:5000/uploads/${url}`);
+    // setImageUrl(`http://localhost:5000/uploads/${url}`);
+    setImageUrl(`https://ride-app-backend-liq8.onrender.com/uploads/${url}`);
     setOpen(true);
   };
 
