@@ -53,7 +53,7 @@ const BookingsDetails = () => {
   };
 
   const tabClasses = (tab) =>
-    `px-4 py-2 font-medium rounded-full transition text-sm sm:text-base ${
+    `px-4 py-1 font-medium rounded-full transition text-sm sm:text-base ${
       activeTab === tab
         ? "bg-blue-600 text-white shadow-md"
         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -88,7 +88,7 @@ const BookingsDetails = () => {
       </h2>
 
       {/* Tabs */}
-      <div className="flex justify-center gap-2 sm:gap-3 mb-6 flex-wrap">
+      <div className="flex justify-center gap-2 sm:gap-3 mb-6 flex-wrap overflow-x-auto">
         {["pending", "confirmed", "rejected"].map((tab) => (
           <button
             key={tab}

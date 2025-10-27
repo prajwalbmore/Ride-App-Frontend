@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const BaseUrl = "https://ride-app-backend-liq8.onrender.com/api";
-// const BaseUrl = "http://localhost:5000/api";
+// const BaseUrl = "https://ride-app-backend-liq8.onrender.com/api";
+const BaseUrl = "http://localhost:5000/api";
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl:BaseUrl  }),
+  baseQuery: fetchBaseQuery({ baseUrl: BaseUrl }),
   endpoints: (builder) => ({
     getRides: builder.query({
       query: () => "/rides",
@@ -22,8 +22,12 @@ export const authApi = createApi({
         body: data,
       }),
     }),
+    
   }),
 });
 
-export const { useGetRidesQuery, useLoginMutation, useRegisterMutation } =
-  authApi;
+export const {
+  useGetRidesQuery,
+  useLoginMutation,
+  useRegisterMutation,
+} = authApi;

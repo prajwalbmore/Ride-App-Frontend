@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const BaseUrl = "https://ride-app-backend-liq8.onrender.com/api";
-// const BaseUrl = "http://localhost:5000/api";
+// const BaseUrl = "https://ride-app-backend-liq8.onrender.com/api";
+const BaseUrl = "http://localhost:5000/api";
 export const rideApi = createApi({
   reducerPath: "rideApi",
   baseQuery: fetchBaseQuery({
@@ -28,6 +28,13 @@ export const rideApi = createApi({
         body: data,
       }),
     }),
+    addQR: builder.mutation({
+      query: (data) => ({
+        url: "/auth/add-qr",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -35,4 +42,5 @@ export const {
   useGetRidesQuery,
   useAddRideMutation,
   useGetRidesByDriverIdQuery,
+  useAddQRMutation,
 } = rideApi;
