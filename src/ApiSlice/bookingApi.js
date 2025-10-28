@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const BaseUrl = "https://ride-app-backend-liq8.onrender.com/api";
-// const BaseUrl = "http://localhost:5000/api";
+import { BASEURL } from "../app/app.constant";
+
 export const bookingApi = createApi({
   reducerPath: "bookingApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: BaseUrl,
+    baseUrl: BASEURL,
     prepareHeaders: (headers, { getState }) => {
       // Get token from your Redux store or localStorage
       const token = localStorage.getItem("token"); // or from state: getState().auth.token

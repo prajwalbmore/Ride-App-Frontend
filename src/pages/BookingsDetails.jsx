@@ -8,6 +8,7 @@ import Spinner from "../components/Spinner";
 import Modal from "../components/Modal";
 import BookingCard from "./BookingCard";
 import { toast } from "sonner";
+import { IMAGEBASEURL } from "../app/app.constant";
 
 const BookingsDetails = () => {
   const { id } = useParams();
@@ -47,8 +48,7 @@ const BookingsDetails = () => {
 
   const handleViewScreenshot = (url, booking) => {
     setSelected(booking);
-    // setImageUrl(`http://localhost:5000/uploads/${url}`);
-    setImageUrl(`https://ride-app-backend-liq8.onrender.com/uploads/${url}`);
+    setImageUrl(`${IMAGEBASEURL}/${url}`);
     setOpen(true);
   };
 

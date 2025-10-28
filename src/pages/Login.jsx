@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const Login = () => {
-  const [Login] = useLoginMutation();
+  const [Login, { isLoading }] = useLoginMutation();
   const { login } = useAuth();
   const navigate = useNavigate();
   const initialValues = {
@@ -94,8 +94,9 @@ const Login = () => {
             <button
               type="submit"
               className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition font-semibold"
+              disabled={isLoading}
             >
-              Log In
+              {isLoading ? "Loging..." : "Log In"}
             </button>
           </Form>
         </Formik>

@@ -1,11 +1,12 @@
 import React from "react";
 import { MapPin, Clock, Car, User, IndianRupee } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const RideCard = ({ ride, isUser = false, setOpen }) => {
   const navigate = useNavigate();
   if (!ride) return null;
-
+  const { user } = useAuth();
   const statusColors = {
     active: "bg-green-500",
     completed: "bg-blue-100",
@@ -77,8 +78,9 @@ const RideCard = ({ ride, isUser = false, setOpen }) => {
       {/* Footer Button */}
       <div className="bg-gray-50 px-5 py-3 border-t border-gray-100 flex justify-end">
         <button
-          disabled={ride.seatsAvailable === 0}
+          disabled={isUser && ride.seatsAvailable === 0}
           onClick={() => {
+            if (!user) navigate("/login");
             if (isUser) {
               setOpen();
             } else {

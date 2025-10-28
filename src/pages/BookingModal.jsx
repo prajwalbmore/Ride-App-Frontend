@@ -5,6 +5,7 @@ import { useCreateBookingMutation } from "../ApiSlice/bookingApi";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { toast } from "sonner";
+import { IMAGEBASEURL } from "../app/app.constant";
 
 const BookingModal = ({ setOpen, selected }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -91,7 +92,7 @@ const BookingModal = ({ setOpen, selected }) => {
   };
   console.log(
     "first",
-    `http://localhost:5000/upload/${selected?.driverId?.qrCode}`
+    `https://ride-app-backend-liq8.onrender.com/uploads/${selected?.driverId?.qrCode}`
   );
   return (
     <div className="space-y-5">
@@ -108,8 +109,7 @@ const BookingModal = ({ setOpen, selected }) => {
         </p>
         <div className="flex justify-center">
           <img
-            // src={`http://localhost:5000/uploads/${selected?.driverId?.qrCode}`}
-            src={`https://ride-app-backend-liq8.onrender.com/uploads/${selected?.driverId?.qrCode}`}
+            src={`${IMAGEBASEURL}/${selected?.driverId?.qrCode}`}
             alt="QR Code"
             className="max-h-[70vh] sm:max-h-[80vh] w-auto object-contain rounded-lg"
           />

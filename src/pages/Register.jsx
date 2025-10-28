@@ -13,7 +13,7 @@ const Register = () => {
     password: "",
   };
   const navigate = useNavigate();
-  const [register] = useRegisterMutation();
+  const [register, { isLoading }] = useRegisterMutation();
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
     email: Yup.string()
@@ -122,8 +122,9 @@ const Register = () => {
             <button
               type="submit"
               className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition font-semibold"
+              disabled={isLoading}
             >
-              Sign Up
+              {isLoading ? "Signing..." : "Sign Up"}
             </button>
           </Form>
         </Formik>
